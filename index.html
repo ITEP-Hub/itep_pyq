@@ -773,34 +773,32 @@
         <p>Here you get PYQ of all semester and if you Access our paid plan in which you ger all merged pdf of your 
             all subjects.                .
         </p>
-        
-       <h2 class="section-title">Download PYQ of 1st Semester</h2>
-        <p>
-			>
+        <h2 class="section-title">Download PYQ of 1st Semester</h2>
+		
         <!-- Category Filter -->
 		<div class="button-category">
                 <div class="button-row">
-					<a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:953a43bc-7457-4e1f-ba03-01a056ab6135">
+					<a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a6c8825f-3cd2-4bb9-bb8f-c055332abe30">
                      <button class="btn neon-1">
                         <i class="fas fa-star"></i>Chemistry
                      </button>
 					</a>
 				</div>
 			    <div class="button-row">
-                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:29339b0c-8fe7-4c2e-a573-8702340db068">
+                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:60ef9171-2940-4ca2-b49d-9aa5d6c92d04">
 					 <button class="btn neon-2">
                         <i class="fas fa-bolt"></i> Understanding India
                     </button>
                 </div>
                 <div class="button-row">
-                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:45e4cf64-68ec-46bb-9e45-768d1f3bfd70">
+                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:b1507c87-bed1-4351-b935-da64c52f00d8">
 					<button class="btn neon-3">
                         <i class="fas fa-leaf"></i> Language -1 English 
                     </button>
 					</a>
                 </div>
 			    <div class="button-row">
-                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:920884c8-e923-42c0-8cd1-4b0dfce2fb51">
+                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:f47f46ee-adf3-449c-b906-5193531afb8a">
 						<button class="btn neon-1">
                         <i class="fas fa-star"></i> Physics 
                         </button>
@@ -916,96 +914,6 @@
 		'width' : 728,
 		'params' : {}
 	};
-</script>
-        // PDF Data - In a real app, this would come from a database
-        const pdfData = [
-            {
-                id: 1,
-                title: "Ultimate Guide to Digital Marketing",
-                category: "Guides",
-                size: "2.4 MB",
-                pages: 48,
-                downloads: 1245,
-                file: "digital-marketing-guide.pdf",
-                thumbnail: "guide-thumb.jpg",
-                description: "Comprehensive guide covering all aspects of digital marketing strategies."
-            },
-            {
-                id: 2,
-                title: "Business Plan Template Pack",
-                category: "Templates",
-                size: "3.1 MB",
-                pages: 32,
-                downloads: 892,
-                file: "business-plan-templates.pdf",
-                thumbnail: "template-thumb.jpg",
-                description: "Professional templates for creating winning business plans."
-            },
-            {
-                id: 3,
-                title: "The Psychology of Money",
-                category: "eBooks",
-                size: "5.7 MB",
-                pages: 120,
-                downloads: 2563,
-                file: "psychology-of-money.pdf",
-                thumbnail: "ebook-thumb.jpg",
-                description: "Bestselling book about money and financial decision making."
-            },
-            {
-                id: 4,
-                title: "2023 Social Media Trends Report",
-                category: "Reports",
-                size: "1.8 MB",
-                pages: 24,
-                downloads: 1532,
-                file: "social-media-trends.pdf",
-                thumbnail: "report-thumb.jpg",
-                description: "Latest trends and statistics for social media marketing."
-            },
-            {
-                id: 5,
-                title: "Resume & Cover Letter Templates",
-                category: "Templates",
-                size: "4.2 MB",
-                pages: 36,
-                downloads: 3241,
-                file: "resume-templates.pdf",
-                thumbnail: "resume-thumb.jpg",
-                description: "Professional templates to help you land your dream job."
-            }
-        ];
-
-        // DOM Elements
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        const pdfGrid = document.getElementById('pdfGrid');
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const currentYear = document.getElementById('currentYear');
-        
-        // Set current year in footer
-        currentYear.textContent = new Date().getFullYear();
-
-        // Mobile menu toggle
-        mobileMenuBtn.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            this.innerHTML = mainNav.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Initialize PDF Grid
-        function renderPDFs(pdfs = pdfData) {
-            pdfGrid.innerHTML = '';
-            
-            if (pdfs.length === 0) {
-                pdfGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No PDFs found in this category.</p>';
-                return;
-            }
-            
-            pdfs.forEach(pdf => {
-                const pdfCard = document.createElement('div');
-                pdfCard.className = 'pdf-card';
-                pdfCard.innerHTML = `
                     <div class="pdf-thumbnail">
                         <i class="fas fa-file-pdf pdf-icon"></i>
                         <span class="pdf-badge">${pdf.category}</span>
@@ -1020,38 +928,10 @@
                             <i class="fas fa-download"></i> Download (${pdf.size})
                         </a>
                     </div>
-                `;
-                pdfGrid.appendChild(pdfCard);
-            });
-        }
-
-        // Category filter
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const category = this.textContent;
-                if (category === 'All') {
-                    renderPDFs();
-                } else {
-                    const filteredPDFs = pdfData.filter(pdf => pdf.category === category);
-                    renderPDFs(filteredPDFs);
-                }
-            });
-        });
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderPDFs();
-            
-            // Initialize AdSense (replace with your actual AdSense code)
-            initializeAdSense();
-        });
-        
     </script>
 </body>
 </html>
+
 
 
 
