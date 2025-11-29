@@ -596,6 +596,162 @@
         .breadcrumb-item:last-child::after {
             display: none;
         }
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .ad-container {
+            /* Main banner container */
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+            position: relative;
+            /* Set a default height when expanded */
+            height: 85px; 
+        }
+
+        .ad-minimized {
+            /* Style when minimized */
+            height: 30px; /* Reduced height */
+            padding: 5px 20px;
+            opacity: 0.9;
+        }
+
+        .ad-content {
+            /* Ad content area */
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            /* Hide content smoothly when minimized */
+            transition: opacity 0.3s ease-out;
+        }
+        
+        /* Hide content when minimized */
+        .ad-minimized .ad-content {
+            opacity: 0;
+            pointer-events: none; /* Disable interaction */
+            display: none; /* Ensure no overflow or text visibility */
+        }
+
+        .ad-text-area {
+            margin-left: 15px;
+        }
+
+        .ad-text-area h2 {
+            /* Main headline */
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .ad-text-area p {
+            /* 'NISM' label */
+            font-size: 14px;
+            color: #777;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 'i' and '...' icons */
+        .ad-icons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-info-icon, .ad-menu-icon {
+            color: #007bff;
+            font-size: 18px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 0;
+        }
+
+        .apply-button {
+            /* 'APPLY NOW' button */
+            background-color: #3f51b5; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            margin-left: auto; /* Push to the right */
+        }
+
+        .apply-button:hover {
+            background-color: #303f9f;
+        }
+
+        .apply-button span {
+            margin-left: 5px;
+            font-size: 18px;
+        }
+        
+        /* Minimize/Maximize Button Positioning */
+        .toggle-button {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%);
+            right: 10px;
+            line-height: 1;
+            padding: 0;
+            z-index: 10;
+        }
+        
+        /* Move button to the left when minimized */
+        .ad-minimized .toggle-button {
+            left: 10px;
+            right: unset;
+        }
+
+        .toggle-button:hover {
+            color: #333;
+        }
+        
+        /* Hide the close/minimize button when minimized to show the expand button */
+        .ad-minimized .minimize-icon {
+            display: none;
+        }
+        
+        /* Show the expand button only when minimized */
+        .maximize-icon {
+            display: none;
+        }
+        
+        .ad-minimized .maximize-icon {
+            display: block;
+            font-size: 18px; /* Use a smaller size for the expand icon */
+            font-weight: bold;
+		}
+		
 
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -726,6 +882,41 @@
                 <li class="breadcrumb-item">PDF Resources</li>
             </ul>
         </div>
+		<div id="nism-ad" class="ad-container">
+        
+        <button class="toggle-button" onclick="toggleAd()">
+            <span id="minimize-icon" class="minimize-icon">-</span> 
+            <span id="maximize-icon" class="maximize-icon">+</span> 
+        </button>
+
+        <div class="ad-content" id="ad-content-area">
+            
+            <div class="ad-icons">
+                <div class="ad-info-icon" title="Information">i</div>
+                <div class="ad-menu-icon" title="Options">⋮</div>
+            </div>
+
+            <div class="ad-text-area">
+                <p>NISM</p>
+                <h2>Apply Before<br>Seats Are Filled</h2>
+            </div>
+            
+            <a href="APPLY_LINK_HERE" class="apply-button">
+                APPLY NOW <span>></span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleAd() {
+            const ad = document.getElementById('nism-ad');
+            
+            // Toggle the 'ad-minimized' class
+            ad.classList.toggle('ad-minimized');
+            
+            // Optionally, you could change the text of the button here if not using two separate spans (minimize-icon and maximize-icon)
+        }
+	</script>
         
 		
 		<h2 class="section-title">ITEP PYQ Of All Semester </h2>
@@ -857,5 +1048,6 @@
 	
 </body>
 </html>
+
 
 
