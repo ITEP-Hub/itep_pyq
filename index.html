@@ -837,55 +837,65 @@
                 }
             });
         });
-		// Semester 1 Toggle
-const semester1Header = document.getElementById('semester1Header');
-const semester1Content = document.getElementById('semester1Content');
-const semester1Toggle = document.getElementById('semester1Toggle');
-
-// Check if semester 1 was minimized previously
-if (localStorage.getItem('semester1Minimized') === 'true') {
-    semester1Content.classList.remove('expanded');
-    semester1Content.classList.add('minimized');
-    semester1Toggle.textContent = '+';
-}
-
-// Toggle semester 1 content
-semester1Header.addEventListener('click', function() {
-    semester1Content.classList.toggle('minimized');
-    semester1Content.classList.toggle('expanded');
-    
-    if (semester1Content.classList.contains('minimized')) {
-        semester1Toggle.textContent = '+';
-        localStorage.setItem('semester1Minimized', 'true');
-    } else {
-        semester1Toggle.textContent = '-';
-        localStorage.setItem('semester1Minimized', 'false');
-    }
-});
-			// Semester 3 Toggle (add this after semester 1 toggle)
-const semester3Header = document.getElementById('semester3Header');
-const semester3Content = document.getElementById('semester3Content');
-const semester3Toggle = document.getElementById('semester3Toggle');
-
-if (localStorage.getItem('semester3Minimized') === 'true') {
-    semester3Content.classList.remove('expanded');
-    semester3Content.classList.add('minimized');
-    semester3Toggle.textContent = '+';
-}
-
-semester3Header.addEventListener('click', function() {
-    semester3Content.classList.toggle('minimized');
-    semester3Content.classList.toggle('expanded');
-    
-    if (semester3Content.classList.contains('minimized')) {
-        semester3Toggle.textContent = '+';
-        localStorage.setItem('semester3Minimized', 'true');
-    } else {
-        semester3Toggle.textContent = '-';
-        localStorage.setItem('semester3Minimized', 'false');
-    }
-});
 </script>
+		<script>
+    // Semester 1 Toggle Function
+    function toggleSemester1() {
+        const content = document.getElementById('semester1Content');
+        const toggleBtn = document.getElementById('semester1Toggle');
+        
+        // Toggle the collapsed class
+        content.classList.toggle('collapsed');
+        
+        // Change button text
+        if (content.classList.contains('collapsed')) {
+            toggleBtn.textContent = '+';
+            // Save state to localStorage
+            localStorage.setItem('semester1Collapsed', 'true');
+        } else {
+            toggleBtn.textContent = '−';
+            localStorage.setItem('semester1Collapsed', 'false');
+        }
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if semester 1 was collapsed previously
+        if (localStorage.getItem('semester1Collapsed') === 'true') {
+            const content = document.getElementById('semester1Content');
+            const toggleBtn = document.getElementById('semester1Toggle');
+            
+            content.classList.add('collapsed');
+            toggleBtn.textContent = '+';
+        }
+    });
+			    // Semester 3 Toggle Function
+    function toggleSemester3() {
+        const content = document.getElementById('semester3Content');
+        const toggleBtn = document.getElementById('semester3Toggle');
+        
+        content.classList.toggle('collapsed');
+        
+        if (content.classList.contains('collapsed')) {
+            toggleBtn.textContent = '+';
+            localStorage.setItem('semester3Collapsed', 'true');
+        } else {
+            toggleBtn.textContent = '−';
+            localStorage.setItem('semester3Collapsed', 'false');
+        }
+    }
+    
+    // Initialize Semester 3 on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('semester3Collapsed') === 'true') {
+            const content = document.getElementById('semester3Content');
+            const toggleBtn = document.getElementById('semester3Toggle');
+            
+            content.classList.add('collapsed');
+            toggleBtn.textContent = '+';
+        }
+    });
+		</script>
 
 		<h4>-----------------------------------------</h4>
       <div class="button-category">
@@ -1104,6 +1114,7 @@ semester3Header.addEventListener('click', function() {
 	
 </body>
 </html>
+
 
 
 
