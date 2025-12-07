@@ -537,4 +537,596 @@
         }
 
       
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .breadcrumb-item {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item::after {
+            content: '/';
+            margin-left: 10px;
+            color: var(--gray);
+        }
+
+        .breadcrumb-item:last-child::after {
+            display: none;
+        }
+        .ad-container {
+            width: 300px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .ad-banner {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 12px;
+            padding: 20px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ad-banner.minimized {
+            height: 50px;
+            padding: 10px;
+        }
+        .ad-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .ad-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .minimize-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        
+        .minimize-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .ad-content {
+            transition: all 0.3s ease;
+        }
+        .ad-banner.minimized .ad-content {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .ad-text {
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .ad-cta {
+            display: inline-block;
+            background: #FFD166;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .ad-cta:hover {
+            background: #ffc233;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin: 25px 0 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        /* Semester Section Toggle */
+        .semester-section {
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .semester-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+            border-radius: 8px;
+            color: white;
+        }
+
+        .semester-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .toggle-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .semester-content {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .semester-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .semester-content.expanded {
+            max-height: 2000px;
+            opacity: 1;
+        }    
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .pdf-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .search-input {
+                padding: 12px 15px;
+            }
+            
+            .search-btn {
+                padding: 8px 15px;
+            }
+            
+            .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-banner.vertical {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-file-pdf logo-icon"></i>
+                <span class="logo-text"> ITEP PYQ<span>Hub</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://itep-hub.github.io/Itep_syllabus/">ITEP Syllabus</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Download Previous Year Question Paper of ITEP course</h1>
+            <p>Access our collection of free Syllabus, PYQ's and many more. All resources are free to download.</p>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search for PDFs...">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <ul class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">PDF Resources</li>
+            </ul>
+        </div>
+        <div class="ad-container">
+            <p> Ad!</p>
+            <div class="ad-banner" id="adBanner">
+                <div class="ad-header">
+                    <div class="ad-title">Online Earning</div>
+                    <button class="minimize-btn" id="minimizeBtn">_</button>
+                </div>
+                <div class="ad-content">
+                    <p class="ad-text">Google Map Review Work!</p>
+                    <a href="https://t.me/googleReview_stask" class="ad-cta">Click Here to get 150/hour</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adBanner = document.getElementById('adBanner');
+            const minimizeBtn = document.getElementById('minimizeBtn');
+            
+            // Check if the banner was minimized previously
+            if (localStorage.getItem('adMinimized') === 'true') {
+                adBanner.classList.add('minimized');
+                minimizeBtn.textContent = '+';
+            }
+            
+            // Toggle minimize state
+            minimizeBtn.addEventListener('click', function() {
+                adBanner.classList.toggle('minimized');
+                if (adBanner.classList.contains('minimized')) {
+                    minimizeBtn.textContent = '+';
+                    localStorage.setItem('adMinimized', 'true');
+                } else {
+                    minimizeBtn.textContent = '_';
+                    localStorage.setItem('adMinimized', 'false');
+                }
+            });
+        });
+        </script>
+        <h4>-----------------------------------------</h4>
+        <div class="button-category">
+            <div class="button-row">
+                <a href="https://itep-hub.github.io/Itep_syllabus/">
+                    <button class="btn neon-3">
+                        <i class="fas fa-leaf"></i>ITEP's Syllabus
+                    </button>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Semester 1 Section -->
+        <div class="semester-section">
+            <div class="semester-header" id="semester1Header" onclick="toggleSemester1()">
+                <h3>Semester - 1</h3>
+                <button class="toggle-btn" id="semester1Toggle">-</button>
+            </div>
+            
+            <div class="semester-content expanded" id="semester1Content">
+                <!-- Your existing button category for Semester 1 -->
+                <div class="button-category">
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:87305cfa-baa6-423c-a7dd-d2325a27945a">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i>Botany
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a6c8825f-3cd2-4bb9-bb8f-c055332abe30">
+                            <button class="btn neon-1">
+                                <i class="fas fa-star"></i>Chemistry
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:60ef9171-2940-4ca2-b49d-9aa5d6c92d04">
+                            <button class="btn neon-2">
+                                <i class="fas fa-bolt"></i> Understanding India
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:b1507c87-bed1-4351-b935-da64c52f00d8">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i> Language -1 English 
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:f47f46ee-adf3-449c-b906-5193531afb8a">
+                            <button class="btn neon-1">
+                                <i class="fas fa-star"></i> Physics 
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a9888039-9f2b-488d-b99d-1b28efcceb92">
+                            <button class="btn neon-2">
+                                <i class="fas fa-bolt"></i> Mathematics 
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a07b220b-34a8-4c80-8f1f-cea732cf2b44">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i> Evolution of Indian Education 
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester 3 Section -->
+        <div class="semester-section">
+            <div class="semester-header" id="semester3Header" onclick="toggleSemester3()">
+                <h3>Semester - 3</h3>
+                <button class="toggle-btn" id="semester3Toggle">-</button>
+            </div>
+            
+            <div class="semester-content expanded" id="semester3Content">
+                <div class="button-row">
+                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:0e0e9d53-fe04-4e5e-80ce-a2a75a7dcb1c">
+                        <button class="btn neon-3">
+                            <i class="fas fa-leaf"></i> Differential Equations-I
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <p> Remaining semester PYQ'S updated soon </p> 
+        
+        <script>
+            // Semester 1 Toggle Function
+            function toggleSemester1() {
+                const content = document.getElementById('semester1Content');
+                const toggleBtn = document.getElementById('semester1Toggle');
+                
+                // Toggle the collapsed class
+                content.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+                
+                // Change button text
+                if (content.classList.contains('collapsed')) {
+                    toggleBtn.textContent = '+';
+                    // Save state to localStorage
+                    localStorage.setItem('semester1Collapsed', 'true');
+                } else {
+                    toggleBtn.textContent = '-';
+                    localStorage.setItem('semester1Collapsed', 'false');
+                }
+            }
+            
+            // Semester 3 Toggle Function
+            function toggleSemester3() {
+                const content = document.getElementById('semester3Content');
+                const toggleBtn = document.getElementById('semester3Toggle');
+                
+                content.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+                
+                if (content.classList.contains('collapsed')) {
+                    toggleBtn.textContent = '+';
+                    localStorage.setItem('semester3Collapsed', 'true');
+                } else {
+                    toggleBtn.textContent = '-';
+                    localStorage.setItem('semester3Collapsed', 'false');
+                }
+            }
+            
+            // Initialize on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check if semester 1 was collapsed previously
+                if (localStorage.getItem('semester1Collapsed') === 'true') {
+                    const content = document.getElementById('semester1Content');
+                    const toggleBtn = document.getElementById('semester1Toggle');
+                    
+                    content.classList.add('collapsed');
+                    content.classList.remove('expanded');
+                    toggleBtn.textContent = '+';
+                }
+                
+                // Initialize Semester 3 on page load
+                if (localStorage.getItem('semester3Collapsed') === 'true') {
+                    const content = document.getElementById('semester3Content');
+                    const toggleBtn = document.getElementById('semester3Toggle');
+                    
+                    content.classList.add('collapsed');
+                    content.classList.remove('expanded');
+                    toggleBtn.textContent = '+';
+                }
+            });
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About ITEP_HUB</h3>
+                    <p>ITEP_Hub is your one-stop destination for high-quality PDF of PYQ and Syllabus resources. We provide free downloads of valuable documents to help you in your personal and professional life.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@spreadx-46?si=_j1RD7aCb9A6NCkI"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Popular PDFs</a></li>
+                        <li><a href="#">New Uploads</a></li>
+                        <li><a href="#">Request a PDF</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Templates</a></li>
+                        <li><a href="#">Educational Guides</a></li>
+                        <li><a href="#">Technical Manuals</a></li>
+                        <li><a href="#">Creative Resources</a></li>
+                        <li><a href="#">Legal Documents</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive updated more PYQ's an New Syllabus additions.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn">Subscribe</button>
+            </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> ITEP_HUB. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
+
 
