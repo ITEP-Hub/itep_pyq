@@ -292,99 +292,71 @@
             box-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00;
 		}
 
-        /* PDF Grid */
-        .pdf-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
+		/* Semester Section Toggle */
+.semester-section {
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
 
-        .pdf-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.semester-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+    border-radius: 8px;
+    color: white;
+}
 
-        .pdf-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+.semester-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 
-        .pdf-thumbnail {
-            height: 180px;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+.toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
 
-        .pdf-thumbnail img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
 
-        .pdf-icon {
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.7;
-        }
+.semester-content {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
 
-        .pdf-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--primary);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
+.semester-content.minimized {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
 
-        .pdf-info {
-            padding: 20px;
-        }
-
-        .pdf-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--dark);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .pdf-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .pdf-download-btn {
-            display: block;
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-
-        .pdf-download-btn:hover {
-            background-color: var(--primary-dark);
-        }
+.semester-content.expanded {
+    max-height: 2000px;
+    opacity: 1;
+}
 
         /* Categories */
         .category-filter {
@@ -865,7 +837,55 @@
                 }
             });
         });
-    </script>
+		// Semester 1 Toggle
+const semester1Header = document.getElementById('semester1Header');
+const semester1Content = document.getElementById('semester1Content');
+const semester1Toggle = document.getElementById('semester1Toggle');
+
+// Check if semester 1 was minimized previously
+if (localStorage.getItem('semester1Minimized') === 'true') {
+    semester1Content.classList.remove('expanded');
+    semester1Content.classList.add('minimized');
+    semester1Toggle.textContent = '+';
+}
+
+// Toggle semester 1 content
+semester1Header.addEventListener('click', function() {
+    semester1Content.classList.toggle('minimized');
+    semester1Content.classList.toggle('expanded');
+    
+    if (semester1Content.classList.contains('minimized')) {
+        semester1Toggle.textContent = '+';
+        localStorage.setItem('semester1Minimized', 'true');
+    } else {
+        semester1Toggle.textContent = '-';
+        localStorage.setItem('semester1Minimized', 'false');
+    }
+});
+			// Semester 3 Toggle (add this after semester 1 toggle)
+const semester3Header = document.getElementById('semester3Header');
+const semester3Content = document.getElementById('semester3Content');
+const semester3Toggle = document.getElementById('semester3Toggle');
+
+if (localStorage.getItem('semester3Minimized') === 'true') {
+    semester3Content.classList.remove('expanded');
+    semester3Content.classList.add('minimized');
+    semester3Toggle.textContent = '+';
+}
+
+semester3Header.addEventListener('click', function() {
+    semester3Content.classList.toggle('minimized');
+    semester3Content.classList.toggle('expanded');
+    
+    if (semester3Content.classList.contains('minimized')) {
+        semester3Toggle.textContent = '+';
+        localStorage.setItem('semester3Minimized', 'true');
+    } else {
+        semester3Toggle.textContent = '-';
+        localStorage.setItem('semester3Minimized', 'false');
+    }
+});
+</script>
 
 		<h4>-----------------------------------------</h4>
       <div class="button-category">
@@ -878,11 +898,71 @@
 				</div>
 	  </div>
 		
-		<h2 class="section-title">ITEP PYQ Of All Semester </h2>
-         <h3 class="section-title">Semester - 1</h3>
-        <p> This website is Build for only getting study Material related to ITEP Course.
-        </p>
+		<!-- Semester 1 Section -->
+<div class="semester-section">
+    <div class="semester-header" id="semester1Header">
+        <h3>Semester - 1</h3>
+        <button class="toggle-btn" id="semester1Toggle">-</button>
+    </div>
+    
+    <div class="semester-content expanded" id="semester1Content">
+        <p>This website is Build for only getting study Material related to ITEP Course.</p>
         <h2 class="section-title">Download PYQ of 1st Semester</h2>
+        
+        <!-- Your existing button category for Semester 1 -->
+        <div class="button-category">
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:87305cfa-baa6-423c-a7dd-d2325a27945a">
+                    <button class="btn neon-3">
+                        <i class="fas fa-leaf"></i>Botany
+                    </button>
+                </a>
+            </div>
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a6c8825f-3cd2-4bb9-bb8f-c055332abe30">
+                    <button class="btn neon-1">
+                        <i class="fas fa-star"></i>Chemistry
+                    </button>
+                </a>
+            </div>
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:60ef9171-2940-4ca2-b49d-9aa5d6c92d04">
+                    <button class="btn neon-2">
+                        <i class="fas fa-bolt"></i> Understanding India
+                    </button>
+                </a>
+            </div>
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:b1507c87-bed1-4351-b935-da64c52f00d8">
+                    <button class="btn neon-3">
+                        <i class="fas fa-leaf"></i> Language -1 English 
+                    </button>
+                </a>
+            </div>
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:f47f46ee-adf3-449c-b906-5193531afb8a">
+                    <button class="btn neon-1">
+                        <i class="fas fa-star"></i> Physics 
+                    </button>
+                </a>
+            </div>
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a9888039-9f2b-488d-b99d-1b28efcceb92">
+                    <button class="btn neon-2">
+                        <i class="fas fa-bolt"></i> Mathematics 
+                    </button>
+                </a>
+            </div>
+            <div class="button-row">
+                <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:a07b220b-34a8-4c80-8f1f-cea732cf2b44">
+                    <button class="btn neon-3">
+                        <i class="fas fa-leaf"></i> Evolution of Indian Education 
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 		
         <!-- Category Filter -->
 		<div class="button-category">
@@ -936,16 +1016,23 @@
 				</div>
 		</div>
 		
-	<div class="button-category">
-		<h3 class="section-title">Semester - 3</h3>
-		<div class="button-row">
-                    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:0e0e9d53-fe04-4e5e-80ce-a2a75a7dcb1c">
-						<button class="btn neon-3">
-                        <i class="fas fa-leaf"></i> Differential Equations-I
-                    </button>
-					</a>
-		</div>
-	</div>
+	<!-- Semester 3 Section -->
+<div class="semester-section">
+    <div class="semester-header" id="semester3Header">
+        <h3>Semester - 3</h3>
+        <button class="toggle-btn" id="semester3Toggle">-</button>
+    </div>
+    
+    <div class="semester-content expanded" id="semester3Content">
+        <div class="button-row">
+            <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:0e0e9d53-fe04-4e5e-80ce-a2a75a7dcb1c">
+                <button class="btn neon-3">
+                    <i class="fas fa-leaf"></i> Differential Equations-I
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
         <p> Remaining semester PYQ'S updated soon </p> 
 		
        <!-- PDF Grid -->
@@ -1017,6 +1104,7 @@
 	
 </body>
 </html>
+
 
 
 
