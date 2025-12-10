@@ -865,45 +865,7 @@
                 <li class="breadcrumb-item">PDF Resources</li>
             </ul>
         </div>
-        <div class="ad-container">
-            <p> Ad!</p>
-            <div class="ad-banner" id="adBanner">
-                <div class="ad-header">
-                    <div class="ad-title">Online Earning</div>
-                    <button class="minimize-btn" id="minimizeBtn">_</button>
-                </div>
-                <div class="ad-content">
-                    <p class="ad-text">Google Map Review Work!</p>
-                    <a href="https://t.me/googleReview_stask" class="ad-cta">Click Here to get 150/hour</a>
-                </div>
-            </div>
-        </div>
-        </div>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const adBanner = document.getElementById('adBanner');
-            const minimizeBtn = document.getElementById('minimizeBtn');
-            
-            // Check if the banner was minimized previously
-            if (localStorage.getItem('adMinimized') === 'true') {
-                adBanner.classList.add('minimized');
-                minimizeBtn.textContent = '+';
-            }
-            
-            // Toggle minimize state
-            minimizeBtn.addEventListener('click', function() {
-                adBanner.classList.toggle('minimized');
-                if (adBanner.classList.contains('minimized')) {
-                    minimizeBtn.textContent = '+';
-                    localStorage.setItem('adMinimized', 'true');
-                } else {
-                    minimizeBtn.textContent = '_';
-                    localStorage.setItem('adMinimized', 'false');
-                }
-            });
-        });
-        </script>
-        <h4>-----------------------------------------</h4>
+        
         <div class="button-category">
             <div class="button-row">
                 <a href="https://itep-hub.github.io/Itep_syllabus/">
@@ -1128,5 +1090,6 @@
     </script>
 </body>
 </html>
+
 
 
