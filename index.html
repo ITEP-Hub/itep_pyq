@@ -956,7 +956,40 @@
                 </div>
             </div>
         </div>
-        
+
+        <!-- Semester 4 Section -->
+        <div class="semester-section">
+            <div class="semester-header" id="semester4Header" onclick="toggleSemester4()">
+                <h3>Semester - 4</h3>
+                <button class="toggle-btn" id="semester4Toggle">-</button>
+            </div>
+            
+            <div class="semester-content expanded" id="semester4Content">
+                <!-- Your existing button category for Semester 4 -->
+                <div class="button-category">
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:0fa379a8-3bd6-4d73-ba30-933911bb6cd7">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i> Physics
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:1de05ebf-8a7e-4230-a22a-d5567ffc1f47">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i> Mathematics
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:d924a35c-4d8f-4892-88e6-a73e08888a74">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i> Chemistry
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         <p> Remaining semester PYQ'S updated soon </p> 
         
         <script>
@@ -997,6 +1030,26 @@
                 }
             }
             
+            // Semester 4 Toggle Function
+            function toggleSemester4() {
+                const content = document.getElementById('semester4Content');
+                const toggleBtn = document.getElementById('semester4Toggle');
+                
+                // Toggle the collapsed class
+                content.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+                
+                // Change button text
+                if (content.classList.contains('collapsed')) {
+                    toggleBtn.textContent = '+';
+                    // Save state to localStorage
+                    localStorage.setItem('semester4Collapsed', 'true');
+                } else {
+                    toggleBtn.textContent = '-';
+                    localStorage.setItem('semester4Collapsed', 'false');
+                }
+            }
+            
             // Initialize on page load
             document.addEventListener('DOMContentLoaded', function() {
                 // Check if semester 1 was collapsed previously
@@ -1013,6 +1066,16 @@
                 if (localStorage.getItem('semester3Collapsed') === 'true') {
                     const content = document.getElementById('semester3Content');
                     const toggleBtn = document.getElementById('semester3Toggle');
+                    
+                    content.classList.add('collapsed');
+                    content.classList.remove('expanded');
+                    toggleBtn.textContent = '+';
+                }
+                
+                // Initialize Semester 4 on page load
+                if (localStorage.getItem('semester4Collapsed') === 'true') {
+                    const content = document.getElementById('semester4Content');
+                    const toggleBtn = document.getElementById('semester4Toggle');
                     
                     content.classList.add('collapsed');
                     content.classList.remove('expanded');
