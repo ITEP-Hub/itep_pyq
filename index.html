@@ -938,6 +938,40 @@
                 </div>
             </div>
         </div>
+        <!-- Semester 2 Section -->
+        <div class="semester-section">
+            <div class="semester-header" id="semester2Header" onclick="toggleSemester2()">
+                <h3>Semester - 2</h3>
+                <button class="toggle-btn" id="semester2Toggle">-</button>
+            </div>
+            
+            <div class="semester-content expanded" id="semester2Content">
+                <!-- Your existing button category for Semester 2 -->
+                <div class="button-category">
+                    <div class="button-row">
+                        <a href="">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i>Botany
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:87305cfa-baa6-423c-a7dd-d2325a27945a">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i>Botany
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button-row">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:87305cfa-baa6-423c-a7dd-d2325a27945a">
+                            <button class="btn neon-3">
+                                <i class="fas fa-leaf"></i>Botany
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Semester 3 Section -->
         <div class="semester-section">
@@ -1010,6 +1044,25 @@
                 } else {
                     toggleBtn.textContent = '-';
                     localStorage.setItem('semester1Collapsed', 'false');
+                }
+            }
+            // Semester 2 Toggle Function
+            function toggleSemester2() {
+                const content = document.getElementById('semester2Content');
+                const toggleBtn = document.getElementById('semester2Toggle');
+                
+                // Toggle the collapsed class
+                content.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+                
+                // Change button text
+                if (content.classList.contains('collapsed')) {
+                    toggleBtn.textContent = '+';
+                    // Save state to localStorage
+                    localStorage.setItem('semester2Collapsed', 'true');
+                } else {
+                    toggleBtn.textContent = '-';
+                    localStorage.setItem('semester2Collapsed', 'false');
                 }
             }
             
